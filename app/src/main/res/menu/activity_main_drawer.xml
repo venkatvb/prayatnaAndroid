@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_online_events" android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/online_events" />
+        <item android:id="@+id/nav_onsite_events" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/onsite_events" />
+        <item android:id="@+id/nav_workshops" android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="@string/workshops" />
+        <item android:id="@+id/nav_sponsors" android:icon="@android:drawable/ic_menu_manage"
+            android:title="@string/sponsors" />
+    </group>
+
+    <item android:title="Who we are!">
+        <menu>
+            <item android:id="@+id/nav_about_us" android:icon="@android:drawable/ic_menu_share"
+                android:title="@string/about_us" />
+            <item android:id="@+id/nav_contact_us" android:icon="@android:drawable/ic_menu_send"
+                android:title="@string/contact_us" />
+        </menu>
+    </item>
+
+</menu>

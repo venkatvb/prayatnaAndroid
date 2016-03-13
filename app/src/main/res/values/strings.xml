@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Prayatna</string>
+
+    <string name="web_site_url">http://www.prayatna.org.in/</string>
+    <string name="prayatna_year">Prayatna\' 16</string>
+    <string name="prayatna_image_description">Prayatna\' 16 is a National Level Inter College Technical Symposium Conducted by Association of Computer Technologists (ACT), Department of Computer Technology, Madras Institute of Technology Campus, Anna University, Chennai.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="online_events">Online Events</string>
+    <string name="onsite_events">Onsite Events</string>
+    <string name="workshops">Workshops</string>
+    <string name="sponsors">Sponsors</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contacu Us</string>
+    <string name="title_activity_online_events">OnlineEventsActivity</string>
+</resources>
