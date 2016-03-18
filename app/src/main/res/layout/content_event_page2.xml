@@ -5,63 +5,105 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_event_page2"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="in.org.prayatna.prayatna.EventPageActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="Event Description" />
-        <RelativeLayout
-            android:id="@+id/card_item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_background">
-            <TextView
-                android:id="@+id/desc_event_text_view"
+            <FrameLayout style="@style/CardHeader">
+                <TextView
+                    android:text="Event Description"
+                    style="@style/CardTitle" />
+                <View style="@style/CardSeparator" />
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Description" />
-        </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="Venue" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_background">
-            <TextView
-                android:id="@+id/venue_event_text_view"
+                android:background="@drawable/card_background">
+                <TextView
+                    android:id="@+id/desc_event_text_view"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="16dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout style="@style/CardHeader">
+                <TextView
+                    android:text="Venue"
+                    style="@style/CardTitle" />
+                <View style="@style/CardSeparator" />
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Description" />
-        </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="Results" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_background">
-            <TextView
-                android:id="@+id/results_event_text_view"
+                android:background="@drawable/card_background">
+                <TextView
+                    android:id="@+id/venue_event_text_view"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="16dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout style="@style/CardHeader">
+                <TextView
+                    android:text="Organizer"
+                    style="@style/CardTitle" />
+                <View style="@style/CardSeparator" />
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Description" />
-        </RelativeLayout>
+                android:background="@drawable/card_background">
+                <TextView
+                    android:id="@+id/organizer_event_text_view"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="16dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout style="@style/CardHeader">
+                <TextView
+                    android:text="Results"
+                    style="@style/CardTitle" />
+                <View style="@style/CardSeparator" />
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_background">
+                <TextView
+                    android:id="@+id/results_event_text_view"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="16dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

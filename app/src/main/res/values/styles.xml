@@ -13,5 +13,35 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="CardHeader" parent="@android:style/Widget">
+        <item name="android:paddingTop">3.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="CardTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:paddingLeft">12.0dip</item>
+        <item name="android:paddingTop">8.0dip</item>
+        <item name="android:paddingRight">12.0dip</item>
+        <item name="android:paddingBottom">10.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="CardInfo" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">#ff91a7a7</item>
+        <item name="android:layout_gravity">center|right</item>
+        <item name="android:paddingLeft">12.0dip</item>
+        <item name="android:paddingRight">12.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="CardSeparator" parent="@android:style/Widget">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">@color/divider_gray</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.5dip</item>
+    </style>
 </resources>
