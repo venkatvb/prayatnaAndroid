@@ -25,6 +25,21 @@
             android:label="@string/title_activity_online_events"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".EventPageActivity"
+            android:label="@string/title_activity_event_page"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".OnsiteEventsActivity"
+            android:label="@string/title_activity_onsite_events"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".WorkshopsActivity"
+            android:label="@string/title_activity_workshops"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

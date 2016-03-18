@@ -2,10 +2,13 @@ package in.org.prayatna.prayatna;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.client.Query;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by venkatvb on 13/3/16.
@@ -31,14 +34,11 @@ public class EventListAdapter extends FirebaseListAdapter<Event> {
     protected void populateView(View view, Event event) {
         // Map a Chat object to an entry in our listview
         String author = event.getName();
-        TextView authorText = (TextView) view.findViewById(R.id.author);
-        authorText.setText(author + ": ");
-        // If the message was sent by this user, color it differently
-        if (author != null && author.equals(mUsername)) {
-            authorText.setTextColor(Color.RED);
-        } else {
-            authorText.setTextColor(Color.BLUE);
-        }
-        ((TextView) view.findViewById(R.id.message)).setText(event.getResult());
+        TextView authorText = (TextView) view.findViewById(R.id.eventname);
+        authorText.setText(author);
+        // Set the color
+        authorText.setTextColor(Color.BLUE);
+        ImageView eventImage = (ImageView) view.findViewById(R.id.eventImage);
+        Picasso.with(eventImage.getContext()).load(event.getImg()).resize(75, 75).into(eventImage);
     }
 }

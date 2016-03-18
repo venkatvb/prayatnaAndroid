@@ -1,6 +1,7 @@
 package in.org.prayatna.prayatna;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -32,8 +33,11 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", "prayatna2k16@gmail.com", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Hello Prayata!");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(Intent.createChooser(emailIntent, "Send email"));
             }
         });
 
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -81,42 +86,29 @@ public class MainActivity extends AppCompatActivity
 
 
     public void displayView(int viewId) {
-
-        String title = getString(R.string.app_name);
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         switch (viewId) {
             case R.id.nav_online_events:
                 intent = new Intent(MainActivity.this, OnlineEventsActivity.class);
-                title  = "Online Events";
                 break;
             case R.id.nav_onsite_events:
-                intent = new Intent(MainActivity.this, OnlineEventsActivity.class);
-                title = "Onsite Events";
+                intent = new Intent(MainActivity.this, OnsiteEventsActivity.class);
                 break;
             case R.id.nav_workshops:
                 intent = new Intent(MainActivity.this, OnlineEventsActivity.class);
-                title = "Workshops";
                 break;
             case R.id.nav_sponsors:
                 intent = new Intent(MainActivity.this, OnlineEventsActivity.class);
-                title = "Sponsors";
                 break;
             case R.id.nav_about_us:
                 intent = new Intent(MainActivity.this, OnlineEventsActivity.class);
-                title = "About Us";
                 break;
             case R.id.nav_contact_us:
                 intent = new Intent(MainActivity.this, OnlineEventsActivity.class);
-                title = "Contact Us";
                 break;
         }
         
         startActivity(intent);
-
-        // set the toolbar title
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(title);
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

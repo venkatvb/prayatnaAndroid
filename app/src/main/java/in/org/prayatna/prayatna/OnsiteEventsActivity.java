@@ -1,16 +1,12 @@
 package in.org.prayatna.prayatna;
 
-import android.app.ActionBar;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,10 +17,10 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class OnlineEventsActivity extends AppCompatActivity {
+public class OnsiteEventsActivity extends AppCompatActivity {
 
-    private static final String FIREBASE_URL = "https://prayatna.firebaseio.com/online";
-    private static final String ONLINE_EVENTS = "onlineEvents";
+    private static final String FIREBASE_URL = "https://prayatna.firebaseio.com/onsite";
+    private static final String ONSITE_EVENTS = "onsiteEvents";
     private String mUsername;
     private Firebase mFirebaseRef;
     private ValueEventListener mConnectedListener;
@@ -36,8 +32,8 @@ public class OnlineEventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_online_events);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        mFirebaseRef = new Firebase(FIREBASE_URL).child(ONLINE_EVENTS);
-        setTitle("Online Events");
+        mFirebaseRef = new Firebase(FIREBASE_URL).child(ONSITE_EVENTS);
+        setTitle("Onsite Events");
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -80,9 +76,9 @@ public class OnlineEventsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event item = (Event) parent.getItemAtPosition(position);
 
-                Intent intent = new Intent(OnlineEventsActivity.this, EventPageActivity.class);
+                Intent intent = new Intent(OnsiteEventsActivity.this, EventPageActivity.class);
                 //based on item add info to intent
-                intent.putExtra("url", FIREBASE_URL + "/" + ONLINE_EVENTS + "/" + item.getId());
+                intent.putExtra("url", FIREBASE_URL + "/" + ONSITE_EVENTS + "/" + item.getId());
                 intent.putExtra("title", item.getName());
                 startActivity(intent);
             }
@@ -94,9 +90,9 @@ public class OnlineEventsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean connected = (Boolean) dataSnapshot.getValue();
                 if (connected) {
-                    Toast.makeText(OnlineEventsActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OnsiteEventsActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(OnlineEventsActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OnsiteEventsActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
                 }
             }
 
