@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -30,31 +31,6 @@ public class EventPageActivity extends AppCompatActivity {
     TextView mVenue;
     TextView mResult;
     TextView mOrganizer;
-    NestedScrollView mView;
-
-    public void OnScrollChanged(int l, int t, int oldl, int oldt) {
-        Log.d("came hereeee", "" + mView.getScrollY());
-        mImageView.setAlpha((int)getAlphaForView(60 - mView.getScrollY()));
-    }
-
-
-    private float getAlphaForView(int position) {
-        int diff = 0;
-        float minAlpha = 0.4f, maxAlpha = 1.f;
-        float alpha = minAlpha; // min alpha
-        if (position > 320)
-            alpha = minAlpha;
-        else if (position + 60 < 320)
-            alpha = maxAlpha;
-        else {
-            diff = 320 - position;
-            alpha += ((diff * 1f) / 60)* (maxAlpha - minAlpha); // 1f and 0.4f are maximum and min
-            // alpha
-            // this will return a number betn 0f and 0.6f
-        }
-        // System.out.println(alpha+" "+screenHeight +" "+locationImageInitialLocation+" "+position+" "+diff);
-        return alpha;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +44,8 @@ public class EventPageActivity extends AppCompatActivity {
         mVenue = (TextView) findViewById(R.id.venue_event_text_view);
         mResult = (TextView) findViewById(R.id.results_event_text_view);
         mOrganizer = (TextView) findViewById(R.id.organizer_event_text_view);
-        mView = (NestedScrollView) findViewById(R.id.scroll_view);
 
+        mImageView.setAlpha(50);
         final String url = getIntent().getStringExtra("url");
         final String title = getIntent().getStringExtra("title");
         setTitle(title);

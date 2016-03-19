@@ -32,7 +32,7 @@
                     android:id="@+id/backdropimage"
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
-                    android:scaleType="fitEnd"
+                    android:scaleType="centerCrop"
                     android:fitsSystemWindows="true"
                     app:layout_collapseMode="parallax" />
 
