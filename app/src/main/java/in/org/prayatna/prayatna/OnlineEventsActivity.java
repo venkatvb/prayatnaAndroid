@@ -10,10 +10,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -29,13 +32,14 @@ public class OnlineEventsActivity extends AppCompatActivity {
     private Firebase mFirebaseRef;
     private ValueEventListener mConnectedListener;
     private EventListAdapter mEventListAdapter;
-
+    private Snackbar mSnackbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_online_events);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        setSupportActionBar(toolbar);
         mFirebaseRef = new Firebase(FIREBASE_URL).child(ONLINE_EVENTS);
         setTitle("Online Events");
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -65,7 +69,11 @@ public class OnlineEventsActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         final ListView listView = (ListView) findViewById(R.id.list);
+        listView.setFocusable(false);
         mEventListAdapter = new EventListAdapter(mFirebaseRef, this, R.layout.content_online_events, "venkat");
+        View view = findViewById(android.R.id.content);
+        mSnackbar = Snackbar.make(view, "Connecting...", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Action", null);
         listView.setAdapter(mEventListAdapter);
         mEventListAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
@@ -94,8 +102,10 @@ public class OnlineEventsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean connected = (Boolean) dataSnapshot.getValue();
                 if (connected) {
+                    mSnackbar.dismiss();
                     Toast.makeText(OnlineEventsActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
                 } else {
+                    mSnackbar.show();
                     Toast.makeText(OnlineEventsActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
                 }
             }

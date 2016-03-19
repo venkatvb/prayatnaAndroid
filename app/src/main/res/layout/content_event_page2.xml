@@ -25,9 +25,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/card_background">
-                <TextView
+                <WebView
                     android:id="@+id/desc_event_text_view"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -48,9 +48,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/card_background">
-                <TextView
+                <WebView
                     android:id="@+id/venue_event_text_view"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -71,9 +71,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/card_background">
-                <TextView
+                <WebView
                     android:id="@+id/organizer_event_text_view"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -94,9 +94,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/card_background">
-                <TextView
+                <WebView
                     android:id="@+id/results_event_text_view"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"

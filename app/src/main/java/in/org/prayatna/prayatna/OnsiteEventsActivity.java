@@ -25,6 +25,7 @@ public class OnsiteEventsActivity extends AppCompatActivity {
     private Firebase mFirebaseRef;
     private ValueEventListener mConnectedListener;
     private EventListAdapter mEventListAdapter;
+    private Snackbar mSnackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,12 @@ public class OnsiteEventsActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         final ListView listView = (ListView) findViewById(R.id.list);
+        listView.setFocusable(false);
         mEventListAdapter = new EventListAdapter(mFirebaseRef, this, R.layout.content_online_events, "venkat");
         listView.setAdapter(mEventListAdapter);
+        View view = findViewById(android.R.id.content);
+        mSnackbar = Snackbar.make(view, "Connecting...", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Action", null);
         mEventListAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
@@ -90,8 +95,10 @@ public class OnsiteEventsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean connected = (Boolean) dataSnapshot.getValue();
                 if (connected) {
+                    mSnackbar.dismiss();
                     Toast.makeText(OnsiteEventsActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
                 } else {
+                    mSnackbar.show();
                     Toast.makeText(OnsiteEventsActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
                 }
             }

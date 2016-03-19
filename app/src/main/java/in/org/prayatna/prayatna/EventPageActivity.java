@@ -9,10 +9,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -27,10 +33,10 @@ public class EventPageActivity extends AppCompatActivity {
 
     ImageView mImageView;
     TextView mDat;
-    TextView mDesc;
-    TextView mVenue;
-    TextView mResult;
-    TextView mOrganizer;
+    WebView mDesc;
+    WebView mVenue;
+    WebView mResult;
+    WebView mOrganizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +46,10 @@ public class EventPageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mImageView = (ImageView) findViewById(R.id.backdropimage);
-        mDesc = (TextView) findViewById(R.id.desc_event_text_view);
-        mVenue = (TextView) findViewById(R.id.venue_event_text_view);
-        mResult = (TextView) findViewById(R.id.results_event_text_view);
-        mOrganizer = (TextView) findViewById(R.id.organizer_event_text_view);
+        mDesc = (WebView) findViewById(R.id.desc_event_text_view);
+        mVenue = (WebView) findViewById(R.id.venue_event_text_view);
+        mResult = (WebView) findViewById(R.id.results_event_text_view);
+        mOrganizer = (WebView) findViewById(R.id.organizer_event_text_view);
 
         mImageView.setAlpha(50);
         final String url = getIntent().getStringExtra("url");
@@ -61,11 +67,10 @@ public class EventPageActivity extends AppCompatActivity {
                 final Event event = snapshot.getValue(Event.class);
                 Log.d("url", url);
                 Log.d("event name", event.getName());
-                mDesc.setText(event.getDesc());
-                mDesc.setText(event.getDesc());
-                mVenue.setText(event.getLocation());
-                mResult.setText(event.getResult());
-                mOrganizer.setText(event.getOrganizer());
+                mDesc.loadData(event.getDesc(), "text/html", "UTF-8");
+                mVenue.loadData(event.getLocation(), "text/html", "UTF-8");
+                mResult.loadData(event.getResult(), "text/html", "UTF-8");
+                mOrganizer.loadData(event.getOrganizer(), "text/html", "UTF-8");
                 Picasso.with(mImageView.getContext()).load(event.getImg()).resize(175, 175).into(mImageView);
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -85,10 +90,10 @@ public class EventPageActivity extends AppCompatActivity {
         // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
